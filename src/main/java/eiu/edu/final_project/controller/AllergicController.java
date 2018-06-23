@@ -26,7 +26,7 @@ public class AllergicController {
     @RequestMapping(value = "/{id}")
     public Allergic getAllergic(@PathVariable String id){
         Allergic allergic = allergicService.getAllergic(id);
-        return new Allergic();
+        return allergic;
     }
 
     @RequestMapping(value = "/addAllergic", method = RequestMethod.POST)

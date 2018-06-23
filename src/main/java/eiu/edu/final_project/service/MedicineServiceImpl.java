@@ -10,8 +10,10 @@ import java.util.Optional;
 
 @Service("medicineService")
 public class MedicineServiceImpl implements IMedicineService {
+
     @Autowired
     IMedicineRepository medicineRepository;
+
     @Override
     public Medicine getMedicinById(String medicineId) {
         Optional<Medicine> medicine = medicineRepository.findById(medicineId);

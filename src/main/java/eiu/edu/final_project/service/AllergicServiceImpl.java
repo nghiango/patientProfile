@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @Service("allergicService")
 public class AllergicServiceImpl implements IAllergicService {
+
     @Autowired
     IAllergicRepository allergicRepository;
 
