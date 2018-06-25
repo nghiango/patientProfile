@@ -27,18 +27,6 @@ public class File {
         this.image = image;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
-
-    public void setTreatmentId(Treatment treatmentId) {
-        this.treatmentId = treatmentId;
-    }
-
     public File() {
     }
 }
