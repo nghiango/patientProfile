@@ -5,7 +5,7 @@ import eiu.edu.final_project.domain.Treatment;
 
 public interface ITreatmentService {
 	
-	Treatment findById(int id);
+	Treatment findById(String id);
 	 
     Treatment findByName(String name);
  
@@ -13,7 +13,7 @@ public interface ITreatmentService {
  
     void updateTreatment(Treatment treatment);
  
-    void deleteTreatmentById(int id);
+    void deleteTreatmentById(String id);
  
     void deleteAllTreatment();
  

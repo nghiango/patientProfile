@@ -1,6 +1,7 @@
 package eiu.edu.final_project.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import eiu.edu.final_project.domain.Treatment;
 import eiu.edu.final_project.repository.ITreatmentRepository;
@@ -15,11 +16,15 @@ import org.springframework.transaction.annotation.Transactional;;
 public class TreatmentServiceIplm implements ITreatmentService {
 
 	@Autowired
-    private ITreatmentRepository treatmentRepository;
+    private ITreatmentRepository iTreatmentRepository;
 
 	@Override
-	public Treatment findById(int id) {
-		return treatmentRepository.findOne(id);
+	public Treatment findById(String id) {
+		Optional<Treatment> treatment = iTreatmentRepository.findById(id);
+		if (treatment.isPresent()){
+			return treatment.get();
+		}
+		return new Treatment();
 	}
 
 	@Override
@@ -30,7 +35,7 @@ public class TreatmentServiceIplm implements ITreatmentService {
 
 	@Override
 	public void saveTreatment(Treatment treatment) {
-		treatmentRepository.save(treatment);
+		iTreatmentRepository.save(treatment);
 		
 	}
 
@@ -41,19 +46,19 @@ public class TreatmentServiceIplm implements ITreatmentService {
 	}
 
 	@Override
-	public void deleteTreatmentById(int id) {
-		treatmentRepository.delete(id);
+	public void deleteTreatmentById(String id) {
+		iTreatmentRepository.delete(id);
 	}
 
 	@Override
 	public void deleteAllTreatment() {
-		treatmentRepository.deleteAll();
+		iTreatmentRepository.deleteAll();
 		
 	}
 
 	@Override
 	public List<Treatment> findAllTreatment() {
-		return (List<Treatment>) treatmentRepository.findAll();
+		return (List<Treatment>) iTreatmentRepository.findAll();
 	}
 
 	@Override

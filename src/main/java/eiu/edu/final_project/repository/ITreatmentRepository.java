@@ -3,9 +3,15 @@ package eiu.edu.final_project.repository;
 import eiu.edu.final_project.domain.Treatment;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface ITreatmentRepository extends MongoRepository<Treatment, String> {
-    Treatment findOne(int id);
-    void delete(int id);
+import java.util.List;
+import java.util.Optional;
 
-    Treatment findById(int id);
+public interface ITreatmentRepository extends MongoRepository<Treatment, String> {
+    void delete(String id);
+
+    List<Treatment> findAllTreatment();
+
+    boolean isTreatmentExist(Treatment treatment);
+
+    void saveTreatment(Treatment treatment);
 }
