@@ -7,26 +7,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FileServiceImpl implements IFileService {
 	
 	@Autowired
-	IFileRepository iFileRepository;
+	IFileRepository fileRepository;
 
 	@Override
-	public File findById(int id) {
-		return iFileRepository.findOne(id);
+	public File findById(String id) {
+		Optional<File> file = fileRepository.findById(id);
+		if (file.isPresent()){
+			return file.get();
+		}
+		return new File();
 	}
 
 	@Override
-	public List<File> findByFileId(int id) {
+	public List<File> findByFileId(String id) {
 		return null;
 	}
 
 	@Override
 	public void saveFile(File file) {
-		iFileRepository.saveAndFlush(file);
+		fileRepository.saveAndFlush(file);
 		
 	}
 
@@ -37,19 +42,19 @@ public class FileServiceImpl implements IFileService {
 	}
 
 	@Override
-	public void deleteFileById(int id) {
-		iFileRepository.delete(id);
+	public void deleteFileById(String id) {
+		fileRepository.delete(id);
 		
 	}
 
 	@Override
 	public void deleteAllFile() {
-		iFileRepository.deleteAll();
+		fileRepository.deleteAll();
 	}
 
 	@Override
 	public List<File> findAllFiles() {
-		return (List<File>)iFileRepository.findAll();
+		return (List<File>) fileRepository.findAll();
 	}
 
 	@Override
