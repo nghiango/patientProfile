@@ -5,15 +5,15 @@ import eiu.edu.final_project.domain.File;
 import java.util.List;
 
 public interface IFileService {
-    File findById(int id);
+    File findById(String id);
 
-    List<File> findByFileId(int id);
+    List<File> findByFileId(String id);
 
     void saveFile(File file);
 
     void updateFile(File file);
 
-    void deleteFileById(int id);
+    void deleteFileById(String id);
 
     void deleteAllFile();
 
