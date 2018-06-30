@@ -6,7 +6,7 @@ import eiu.edu.final_project.domain.TreatmentDetail;
 
 public interface ITreatmentDtService {
 	
-	TreatmentDetail findById(int id);
+	TreatmentDetail findById(String id);
 	 
     TreatmentDetail findByName(String name);
  
@@ -20,7 +20,7 @@ public interface ITreatmentDtService {
  
     List<TreatmentDetail> findAllTreatmentDt();
     
-    List<Object[]> findNotAllergic(int id);
+//    List<Object[]> findNotAllergic(int id);
  
     boolean isTreatmentDtExist(TreatmentDetail treatmentdt);
 

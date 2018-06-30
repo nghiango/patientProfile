@@ -55,26 +55,26 @@ public class TreatmentDtController {
     }
     
  ////====================
-    @RequestMapping(value = "/unAllergic/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> getNotAllerggic(@PathVariable("id") int id) {
-        logger.info("Fetching TreatmentDt with id {}", id);
-        List<Object[]> Objects = treatmentdtService.findNotAllergic(id);
-        List<Medicine> medicines = new ArrayList<Medicine>();
-        if (medicines == null) {
-            logger.error(" not found.");
-        }
-        for (Object[] obj : Objects)
-        {
-        	Medicine medicine = new Medicine();
-        	medicine.setId((Integer)obj[0]);
-        	medicine.setName((String)obj[1]);
-        	medicine.setMfg((Date)obj[2]);
-        	medicine.setProducer((String)obj[3]);
-        	medicine.setDosage((String)obj[4]);
-        	medicines.add(medicine);
-        }
-        return new ResponseEntity<List<Medicine>>(medicines, HttpStatus.OK);
-    }
+//    @RequestMapping(value = "/unAllergic/{id}", method = RequestMethod.GET)
+//    public ResponseEntity<?> getNotAllerggic(@PathVariable("id") int id) {
+//        logger.info("Fetching TreatmentDt with id {}", id);
+////        List<Object[]> Objects = treatmentdtService.findNotAllergic(id);
+//        List<Medicine> medicines = new ArrayList<Medicine>();
+//        if (medicines == null) {
+//            logger.error(" not found.");
+//        }
+//        for (Object[] obj : Objects)
+//        {
+//        	Medicine medicine = new Medicine();
+//        	medicine.setId((String) obj[0]);
+//        	medicine.setName((String)obj[1]);
+//        	medicine.setMfg((Date)obj[2]);
+//        	medicine.setProducer((String)obj[3]);
+//        	medicine.setDosage((String)obj[4]);
+//        	medicines.add(medicine);
+//        }
+//        return new ResponseEntity<List<Medicine>>(medicines, HttpStatus.OK);
+//    }
     
  //// -------------------Create a TreatmentDt-------------------------------------------
  

@@ -20,7 +20,7 @@ public class TreatmentDtServiceIplm implements ITreatmentDtService {
     private ITreatmentDetailRepository iTreatmentDetailRepository;
 
 	@Override
-	public TreatmentDetail findById(int id) {
+	public TreatmentDetail findById(String id) {
 		return iTreatmentDetailRepository.findOne(id);
 	}
 
@@ -64,12 +64,9 @@ public class TreatmentDtServiceIplm implements ITreatmentDtService {
 		return findById(treatmentdt.getId()) != null;
 	}
 
-	@Override
-	public List<Object[]> findNotAllergic(int id) {
-		return iTreatmentDetailRepository.findNotAllergic(id);
-	}
-	
-	
-	
+//	@Override
+//	public List<Object[]> findNotAllergic(int id) {
+//		return iTreatmentDetailRepository.findNotAllergic(id);
+//	}
 
 }

@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface ITreatmentDetailRepository extends MongoRepository<TreatmentDetail, String> {
     List<Object[]> findNotAllergic(int id);
-    TreatmentDetail findOne(int id);
+    TreatmentDetail findOne(String id);
     void delete(int id);
 }
