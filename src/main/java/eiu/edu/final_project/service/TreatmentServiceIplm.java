@@ -60,7 +60,7 @@ public class TreatmentServiceIplm implements ITreatmentService {
 	public List<Treatment> findAllTreatment() {
 		return iTreatmentRepository.findAll();
 	}
-
+  
 	@Override
 	public boolean isTreatmentExist(Treatment treatment) {
 		return findById(treatment.getId()) != null;
