@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.IOException;
+import java.util.Optional;
 
 @RestController
 public class FileController {
@@ -36,7 +37,7 @@ public class FileController {
     public @ResponseBody
     String uploadMultipleFileHandler(@RequestParam(value = "files", required = false) MultipartFile mfile,
                                      @RequestParam("treatmentId") String treatmentId){
-        Treatment treatment = getTreatmentById(Integer.parseInt(treatmentId));
+        Treatment treatment = getTreatmentById(treatmentId);
         File file = new File();
         try {
 
@@ -52,15 +53,17 @@ public class FileController {
 
     }
 
-    public Treatment getTreatmentById(int id){
-        return iTreatmentRepository.findById(id);
+    public Treatment getTreatmentById(String id){
+        Optional<Treatment> treatment = iTreatmentRepository.findById(id);
+        if (treatment.isPresent()){
+            return treatment.get();
+        }
+        return new Treatment();
     }
-
-
 
     ////===================Delete file===================================
     @RequestMapping(value="/file/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteMedicine(@PathVariable("id") int id){
+    public ResponseEntity<?> deleteMedicine(@PathVariable("id") String id){
         logger.info("Fetch & delete medicine with id {}", id);
         File file = fileService.findById(id);
         if(file==null){
