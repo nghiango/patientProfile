@@ -10,4 +10,6 @@ public interface IHistoryRepository extends MongoRepository<History, String> {
     Optional<History> findById(String id);
 
     boolean isHistoryExist(History history);
+
+    void delete(String id);
 }

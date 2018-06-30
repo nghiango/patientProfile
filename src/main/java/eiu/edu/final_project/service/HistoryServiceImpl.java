@@ -38,7 +38,7 @@ public class HistoryServiceImpl implements IHistoryService {
 
 	@Override
 	public void deleteHistoryById(String id) {
-		iHistoryRepository.deleteHistoryById(id);
+		iHistoryRepository.delete(id);
 		
 	}
 
