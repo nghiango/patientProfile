@@ -14,7 +14,7 @@ public interface ITreatmentDtService {
  
     void updateTreatmentDt(TreatmentDetail treatmentdt);
  
-    void deleteTreatmentDtById(int id);
+    void deleteTreatmentDtById(String id);
  
     void deleteAllTreatmentDt();
  

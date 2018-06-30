@@ -58,7 +58,7 @@ public class TreatmentServiceIplm implements ITreatmentService {
 
 	@Override
 	public List<Treatment> findAllTreatment() {
-		return (List<Treatment>) iTreatmentRepository.findAll();
+		return iTreatmentRepository.findAll();
 	}
 
 	@Override

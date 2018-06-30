@@ -1,6 +1,7 @@
 package eiu.edu.final_project.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import eiu.edu.final_project.domain.TreatmentDetail;
 import eiu.edu.final_project.repository.ITreatmentDetailRepository;
@@ -21,7 +22,11 @@ public class TreatmentDtServiceIplm implements ITreatmentDtService {
 
 	@Override
 	public TreatmentDetail findById(String id) {
-		return iTreatmentDetailRepository.findOne(id);
+		Optional<TreatmentDetail> treatmentDetail = iTreatmentDetailRepository.findById(id);
+		if (treatmentDetail.isPresent()){
+			return treatmentDetail.get();
+		}
+		return new TreatmentDetail();
 	}
 
 	@Override
@@ -31,19 +36,19 @@ public class TreatmentDtServiceIplm implements ITreatmentDtService {
 	}
 
 	@Override
-	public void saveTreatmentDt(TreatmentDetail treatmentdt) {
-		iTreatmentDetailRepository.save(treatmentdt);
+	public void saveTreatmentDt(TreatmentDetail treatmentDt) {
+		iTreatmentDetailRepository.save(treatmentDt);
 		
 	}
 
 	@Override
-	public void updateTreatmentDt(TreatmentDetail treatmentdt) {
-		saveTreatmentDt(treatmentdt);
+	public void updateTreatmentDt(TreatmentDetail treatmentDt) {
+		saveTreatmentDt(treatmentDt);
 		
 	}
 
 	@Override
-	public void deleteTreatmentDtById(int id) {
+	public void deleteTreatmentDtById(String id) {
 		iTreatmentDetailRepository.delete(id);
 		
 	}
@@ -56,12 +61,12 @@ public class TreatmentDtServiceIplm implements ITreatmentDtService {
 
 	@Override
 	public List<TreatmentDetail> findAllTreatmentDt() {
-		return (List<TreatmentDetail>) iTreatmentDetailRepository.findAll();
+		return iTreatmentDetailRepository.findAll();
 	}
 
 	@Override
-	public boolean isTreatmentDtExist(TreatmentDetail treatmentdt) {
-		return findById(treatmentdt.getId()) != null;
+	public boolean isTreatmentDtExist(TreatmentDetail treatmentDt) {
+		return findById(treatmentDt.getId()) != null;
 	}
 
 //	@Override
