@@ -33,6 +33,10 @@ public class Treatment {
     @DBRef(lazy = true)
     private List<TreatmentDetail> treatmentDetailList;
 
+    @Field("patient_id")
+    @DBRef
+    private Patient patientId;
+
     @Field("treament_list")
     @DBRef(lazy = true)
     private List<File> fileList;
