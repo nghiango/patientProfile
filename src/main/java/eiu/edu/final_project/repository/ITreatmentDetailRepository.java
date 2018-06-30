@@ -6,7 +6,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 
 public interface ITreatmentDetailRepository extends MongoRepository<TreatmentDetail, String> {
-    List<Object[]> findNotAllergic(int id);
-    TreatmentDetail findOne(String id);
-    void delete(int id);
+    boolean isTreatmentDetailExist(TreatmentDetail treatmentDetail);
+    void delete(String id);
 }
