@@ -2,23 +2,18 @@ package eiu.edu.final_project.controller;
 
 import eiu.edu.final_project.domain.Treatment;
 import eiu.edu.final_project.repository.ITreatmentRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 public class TreatmentController {
 
-    public static final Logger logger = LoggerFactory.getLogger(TreatmentController.class);
 
     @Autowired
     ITreatmentRepository treatmentRepository; //Service which will do all data retrieval/manipulation work
