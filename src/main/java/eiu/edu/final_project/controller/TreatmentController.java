@@ -32,7 +32,7 @@ public class TreatmentController {
     }
 
     @RequestMapping(value = "/treatment/{id}", method = RequestMethod.GET)
-    public Treatment getTreatment(@PathVariable("id") String id) {
+    public Treatment getTreatmentById(@PathVariable("id") String id) {
         Optional<Treatment> treatment = treatmentRepository.findById(id);
         if (treatment.isPresent()) {
             return treatment.get();
@@ -65,7 +65,6 @@ public class TreatmentController {
  
     @RequestMapping(value = "/treatment/{id}", method = RequestMethod.DELETE)
     public void deleteTreatment(@PathVariable("id") String id) {
-        Optional<Treatment> treatment = treatmentRepository.findById(id);
         treatmentRepository.delete(id);
     }
  
