@@ -15,11 +15,6 @@ public class HistoryServiceImpl implements IHistoryService {
 	@Autowired
 	IHistoryRepository iHistoryRepository;
 
-//	@Override
-//	public List<History> findBytreatmentId(int id) {
-//		return historyRepository.findByTreatmentId(id);
-//	}
-
 	@Override
 	public History findById(String id) {
 		Optional<History> history = iHistoryRepository.findById(id);
