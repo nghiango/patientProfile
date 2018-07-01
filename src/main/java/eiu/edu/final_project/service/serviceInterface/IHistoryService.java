@@ -18,6 +18,8 @@ public interface IHistoryService {
     void deleteAllHistory();
  
     List<History> findAllHistorys();
+
+    boolean isHistoryExist(History history);
  
     boolean isMedicineExist(History history);
 }

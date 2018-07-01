@@ -20,11 +20,11 @@ public class Allergic {
     private String id;
 
     @Field("medicine_id")
-    @DBRef
+    @DBRef(lazy = true)
     private Medicine medicineId;
 
     @Field("patient_id")
-    @DBRef
+    @DBRef(lazy = true)
     private Patient patientId;
 
     public Allergic() {

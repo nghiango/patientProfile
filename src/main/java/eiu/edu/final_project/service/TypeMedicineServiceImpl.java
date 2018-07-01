@@ -26,7 +26,7 @@ public class TypeMedicineServiceImpl implements ITypeMedicineService {
 
 	@Override
 	public TypeOfMedicine findByName(String name) {
-		Optional<TypeOfMedicine> typeOfMedicine = typeMedicineRepository.findByTypename(name);
+		Optional<TypeOfMedicine> typeOfMedicine = typeMedicineRepository.findByTypeName(name);
 		if (typeOfMedicine.isPresent()){
 			return typeOfMedicine.get();
 		}
@@ -45,7 +45,7 @@ public class TypeMedicineServiceImpl implements ITypeMedicineService {
 
 	@Override
 	public void deleteTypeMedicineById(String id) {
-		typeMedicineRepository.delete(id);
+		typeMedicineRepository.deleteById(id);
 	}
 
 	@Override

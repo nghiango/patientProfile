@@ -26,7 +26,7 @@ public class Treatment {
     private String prescription;
 
     @Field("doctor_id")
-    @DBRef
+    @DBRef(lazy = true)
     private User doctorId;
 
     @Field("treatment_list")
@@ -34,7 +34,7 @@ public class Treatment {
     private List<TreatmentDetail> treatmentDetailList;
 
     @Field("patient_id")
-    @DBRef
+    @DBRef(lazy = true)
     private Patient patientId;
 
     @Field("treament_list")

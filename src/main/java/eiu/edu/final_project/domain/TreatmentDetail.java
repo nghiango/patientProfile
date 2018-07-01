@@ -19,11 +19,11 @@ public class TreatmentDetail {
     private String diseases;
 
     @Field("treatment_Id")
-    @DBRef
+    @DBRef(lazy = true)
     private Treatment treatmentId;
 
     @Field("medicine_id")
-    @DBRef
+    @DBRef(lazy = true)
     private Medicine medicineId;
 
     public TreatmentDetail(String diseases) {

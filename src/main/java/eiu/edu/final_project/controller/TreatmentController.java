@@ -2,6 +2,7 @@ package eiu.edu.final_project.controller;
 
 import eiu.edu.final_project.domain.Treatment;
 import eiu.edu.final_project.repository.ITreatmentRepository;
+import eiu.edu.final_project.service.TreatmentServiceIplm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,31 +17,27 @@ public class TreatmentController {
 
 
     @Autowired
-    ITreatmentRepository treatmentRepository; //Service which will do all data retrieval/manipulation work
+    TreatmentServiceIplm treatmentServiceIplm; //Service which will do all data retrieval/manipulation work
  
     // -------------------Retrieve All Treatment---------------------------------------------
  
     @RequestMapping(value = "/treatment", method = RequestMethod.GET)
     public List<Treatment> listAllTreatment() {
-        List<Treatment> treatment = treatmentRepository.findAllTreatment();
+        List<Treatment> treatment = treatmentServiceIplm.findAllTreatment();
         return treatment;
     }
 
     @RequestMapping(value = "/treatment/{id}", method = RequestMethod.GET)
     public Treatment getTreatmentById(@PathVariable("id") String id) {
-        Optional<Treatment> treatment = treatmentRepository.findById(id);
-        if (treatment.isPresent()) {
-            return treatment.get();
-        }
-        return new Treatment();
+        return treatmentServiceIplm.findById(id);
     }
  
     // -------------------Create a Treatment-------------------------------------------
  
     @RequestMapping(value = "/treatment", method = RequestMethod.POST)
     public Treatment createTreatment(@RequestBody Treatment treatment) {
-        if (!treatmentRepository.isTreatmentExist(treatment)) {
-            return treatmentRepository.save(treatment);
+        if (!treatmentServiceIplm.isTreatmentExist(treatment)) {
+            treatmentServiceIplm.saveTreatment(treatment);
         }
         return new Treatment();
     }
@@ -49,9 +46,9 @@ public class TreatmentController {
  
     @RequestMapping(value = "/treatment/{id}", method = RequestMethod.PUT)
     public Treatment updateTreatment(@PathVariable("id") String id, @RequestBody Treatment treatment) {
-        Optional<Treatment> currentTreatment = treatmentRepository.findById(id);
-        if (treatmentRepository.isTreatmentExist(currentTreatment.get())) {
-            return treatmentRepository.save(treatment);
+        Treatment currentTreatment = treatmentServiceIplm.findById(id);
+        if (treatmentServiceIplm.isTreatmentExist(currentTreatment)) {
+            treatmentServiceIplm.updateTreatment(treatment);
         }
         return null;
     }
@@ -60,13 +57,13 @@ public class TreatmentController {
  
     @RequestMapping(value = "/treatment/{id}", method = RequestMethod.DELETE)
     public void deleteTreatment(@PathVariable("id") String id) {
-        treatmentRepository.delete(id);
+        treatmentServiceIplm.deleteTreatmentById(id);
     }
  
     // ------------------- Delete All Treatment-----------------------------
  
     @RequestMapping(value = "/treatment", method = RequestMethod.DELETE)
     public void deleteAllTreatment() {
-        treatmentRepository.deleteAll();
+        treatmentServiceIplm.deleteAllTreatment();
     }
 }

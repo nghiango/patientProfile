@@ -4,6 +4,7 @@ import java.util.List;
 
 import eiu.edu.final_project.domain.History;
 import eiu.edu.final_project.repository.IHistoryRepository;
+import eiu.edu.final_project.service.HistoryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,13 +15,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HistoryController {
 
 	@Autowired
-	IHistoryRepository historyRepository;
+	HistoryServiceImpl historyService;
 
 	// ======================== Get All History========================
 
 	@RequestMapping(value = "/history", method = RequestMethod.GET)
 	public List<History> getListHistory() {
-		List<History> histories = historyRepository.findAll();
+		List<History> histories = historyService.findAllHistorys();
 		return histories;
 	}
 	
@@ -40,8 +41,8 @@ public class HistoryController {
 
 	@RequestMapping(value = "/history", method = RequestMethod.POST)
 	public History createHistory(@RequestBody History history) {
-		if(!historyRepository.isHistoryExist(history)){
-			return historyRepository.save(history);
+		if(!historyService.isHistoryExist(history)){
+			historyService.saveHistory(history);
 		}
 		return new History();
 	}

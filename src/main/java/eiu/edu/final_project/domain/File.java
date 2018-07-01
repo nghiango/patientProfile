@@ -20,7 +20,7 @@ public class File {
     private byte[] image;
 
     @Field("treatment_id")
-    @DBRef
+    @DBRef(lazy = true)
     private Treatment treatmentId;
 
     public File(byte[] image) {
