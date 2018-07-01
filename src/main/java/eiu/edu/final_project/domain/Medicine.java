@@ -27,7 +27,7 @@ public class Medicine {
     private String dosage;
 
     @Field("type_id")
-    @DBRef
+    @DBRef(lazy = true)
     private TypeOfMedicine typeId;
 
     @Field("allergic_list")

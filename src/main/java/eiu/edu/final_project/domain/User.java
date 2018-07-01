@@ -32,11 +32,11 @@ public class User {
 
     private String sex;
 
-    @DBRef
+    @DBRef(lazy = true)
     private List<Roles> roles;
 
     @Field("treatment_list")
-    @DBRef
+    @DBRef(lazy = true)
     private List<Treatment> treatmentList;
 
     public User(Integer active, String name, String userName, String password, String address, String sex) {

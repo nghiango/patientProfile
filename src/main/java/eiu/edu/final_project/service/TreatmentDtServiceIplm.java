@@ -49,7 +49,7 @@ public class TreatmentDtServiceIplm implements ITreatmentDtService {
 
 	@Override
 	public void deleteTreatmentDtById(String id) {
-		iTreatmentDetailRepository.delete(id);
+		iTreatmentDetailRepository.deleteById(id);
 		
 	}
 

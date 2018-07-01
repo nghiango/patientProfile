@@ -22,8 +22,7 @@ import java.util.Optional;
 public class FileController {
     @Autowired
     FileServiceImpl fileService;
-    @Autowired
-    ITreatmentRepository iTreatmentRepository;
+
     public static final Logger logger = LoggerFactory.getLogger(FileController.class);
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -37,7 +36,7 @@ public class FileController {
     public @ResponseBody
     String uploadMultipleFileHandler(@RequestParam(value = "files", required = false) MultipartFile mfile,
                                      @RequestParam("treatmentId") String treatmentId){
-        Treatment treatment = getTreatmentById(treatmentId);
+        Treatment treatment = fileService.getTreatmentById(treatmentId);
         File file = new File();
         try {
 
@@ -51,14 +50,6 @@ public class FileController {
         }
         return "";
 
-    }
-
-    public Treatment getTreatmentById(String id){
-        Optional<Treatment> treatment = iTreatmentRepository.findById(id);
-        if (treatment.isPresent()){
-            return treatment.get();
-        }
-        return new Treatment();
     }
 
     ////===================Delete file===================================

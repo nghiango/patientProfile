@@ -1,7 +1,9 @@
 package eiu.edu.final_project.service;
 
 import eiu.edu.final_project.domain.File;
+import eiu.edu.final_project.domain.Treatment;
 import eiu.edu.final_project.repository.IFileRepository;
+import eiu.edu.final_project.repository.ITreatmentRepository;
 import eiu.edu.final_project.service.serviceInterface.IFileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,9 +13,12 @@ import java.util.Optional;
 
 @Service
 public class FileServiceImpl implements IFileService {
-	
+
 	@Autowired
 	IFileRepository fileRepository;
+
+	@Autowired
+	TreatmentServiceIplm treatmentServiceIplm;
 
 	@Override
 	public File findById(String id) {
@@ -31,20 +36,18 @@ public class FileServiceImpl implements IFileService {
 
 	@Override
 	public void saveFile(File file) {
-		fileRepository.saveAndFlush(file);
-		
+//		fileRepository.saveAndFlush(file);
 	}
 
 	@Override
 	public void updateFile(File file) {
 		saveFile(file);
-		
 	}
 
 	@Override
 	public void deleteFileById(String id) {
-		fileRepository.delete(id);
-		
+		fileRepository.deleteById(id);
+
 	}
 
 	@Override
@@ -60,6 +63,10 @@ public class FileServiceImpl implements IFileService {
 	@Override
 	public boolean isFileExist(File file) {
 		return false;
+	}
+
+	public Treatment getTreatmentById(String id){
+		return treatmentServiceIplm.findById(id);
 	}
 
 }

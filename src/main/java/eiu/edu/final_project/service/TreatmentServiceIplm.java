@@ -16,11 +16,11 @@ import org.springframework.transaction.annotation.Transactional;;
 public class TreatmentServiceIplm implements ITreatmentService {
 
 	@Autowired
-    private ITreatmentRepository iTreatmentRepository;
+    private ITreatmentRepository treatmentRepository;
 
 	@Override
 	public Treatment findById(String id) {
-		Optional<Treatment> treatment = iTreatmentRepository.findById(id);
+		Optional<Treatment> treatment = treatmentRepository.findById(id);
 		if (treatment.isPresent()){
 			return treatment.get();
 		}
@@ -29,36 +29,32 @@ public class TreatmentServiceIplm implements ITreatmentService {
 
 	@Override
 	public Treatment findByName(String name) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void saveTreatment(Treatment treatment) {
-		iTreatmentRepository.save(treatment);
-		
+		treatmentRepository.save(treatment);
 	}
 
 	@Override
 	public void updateTreatment(Treatment treatment) {
 		saveTreatment(treatment);
-		
 	}
 
 	@Override
 	public void deleteTreatmentById(String id) {
-		iTreatmentRepository.delete(id);
+		treatmentRepository.deleteById(id);
 	}
 
 	@Override
 	public void deleteAllTreatment() {
-		iTreatmentRepository.deleteAll();
-		
+		treatmentRepository.deleteAll();
 	}
 
 	@Override
 	public List<Treatment> findAllTreatment() {
-		return iTreatmentRepository.findAll();
+		return treatmentRepository.findAll();
 	}
   
 	@Override

@@ -7,11 +7,4 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ITreatmentRepository extends MongoRepository<Treatment, String> {
-    void delete(String id);
-
-    List<Treatment> findAllTreatment();
-
-    boolean isTreatmentExist(Treatment treatment);
-
-    void saveTreatment(Treatment treatment);
 }

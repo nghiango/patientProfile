@@ -22,7 +22,7 @@ public class History {
     private Date datetime;
 
     @Field("patient_id")
-    @DBRef
+    @DBRef(lazy = true)
     private Patient patientId;
 
     public History(Date datetime) {
