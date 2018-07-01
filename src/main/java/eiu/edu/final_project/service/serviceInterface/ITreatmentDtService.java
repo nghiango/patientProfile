@@ -12,7 +12,7 @@ public interface ITreatmentDtService {
  
     void saveTreatmentDt(TreatmentDetail treatmentdt);
  
-    void updateTreatmentDt(TreatmentDetail treatmentdt);
+    void updateTreatmentDt(String treatmentDtId, TreatmentDetail treatmentDt);
  
     void deleteTreatmentDtById(String id);
  

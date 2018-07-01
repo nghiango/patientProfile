@@ -65,7 +65,7 @@ public class FileServiceImpl implements IFileService {
 		return false;
 	}
 
-	public Treatment getTreatmentById(String id){
+	public Treatment findTreatmentById(String id){
 		return treatmentServiceIplm.findById(id);
 	}
 

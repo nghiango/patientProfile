@@ -10,7 +10,7 @@ public interface ITypeMedicineService {
  
     void saveTypeMedicine(TypeOfMedicine typeMedicine);
  
-    void updateTypeMedicine(TypeOfMedicine typeMedicine);
+    void updateTypeMedicine(String typeMedicineId, TypeOfMedicine typeMedicine);
  
     void deleteTypeMedicineById(String id);
  

@@ -9,13 +9,13 @@ import java.util.Optional;
 
 public interface IAllergicService {
 
-    public List<Allergic> getAllAllergic();
+    public List<Allergic> findAllAllergic();
 
-    public Allergic getAllergic(String id);
+    public Allergic findAllergicById(String id);
 
-    Medicine getMedicineById(String medicineId);
+    Medicine findMedicineById(String medicineId);
 
-    Patient getPatientById(String patientId);
+    Patient findPatientById(String patientId);
 
     void addAllergic(Medicine medicine, Patient patient);
 }

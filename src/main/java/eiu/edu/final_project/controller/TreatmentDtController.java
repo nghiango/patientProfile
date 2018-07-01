@@ -20,23 +20,23 @@ public class TreatmentDtController {
     @Autowired
     TreatmentDtServiceIplm treatmentDtServiceIplm;
     // -------------------Retrieve All TreatmentDt---------------------------------------------
- 
+
     @RequestMapping(value = "/treatmentDt", method = RequestMethod.GET)
     public List<TreatmentDetail> getAllTreatmentDt() {
         List<TreatmentDetail> treatmentsDt = treatmentDtServiceIplm.findAllTreatmentDt();
         return treatmentsDt;
     }
- 
+
     // -------------------Retrieve Single TreatmentDt------------------------------------------
- 
+
     @RequestMapping(value = "/treatmentDt/{id}", method = RequestMethod.GET)
     public TreatmentDetail getTreatmentDtById(@PathVariable("id") String id) {
         TreatmentDetail treatmentDt = treatmentDtServiceIplm.findById(id);
         return treatmentDt;
     }
-    
- //// -------------------Create a TreatmentDt-------------------------------------------
- 
+
+    //// -------------------Create a TreatmentDt-------------------------------------------
+
     @RequestMapping(value = "/treatmentDt", method = RequestMethod.POST)
     public TreatmentDetail treatmentDt(@RequestBody TreatmentDetail treatmentDt) {
         if (!treatmentDtServiceIplm.isTreatmentDtExist(treatmentDt)) {
@@ -44,27 +44,24 @@ public class TreatmentDtController {
         }
         return new TreatmentDetail();
     }
- 
+
     // ------------------- Update a TreatmentDt ------------------------------------------------
- 
+
     @RequestMapping(value = "/treatmentDt/{id}", method = RequestMethod.PUT)
-    public TreatmentDetail updateTreatmentDt(@PathVariable("id") String id, @RequestBody TreatmentDetail treatmentDt) {
-        TreatmentDetail currentTreatmentDetail = treatmentDtServiceIplm.findById(id);
-        if (treatmentDtServiceIplm.isTreatmentDtExist(currentTreatmentDetail)) {
-            treatmentDtServiceIplm.updateTreatmentDt(treatmentDt);
-        }
+    public TreatmentDetail updateTreatmentDt(@PathVariable String treatmentDtId, @RequestBody TreatmentDetail treatmentDt) {
+        treatmentDtServiceIplm.updateTreatmentDt(treatmentDtId, treatmentDt);
         return null;
     }
- 
+
     // ------------------- Delete a TreatmentDt-----------------------------------------
- 
+
     @RequestMapping(value = "/treatmentDt/{id}", method = RequestMethod.DELETE)
     public void deleteTreatmentDt(@PathVariable("id") String id) {
         treatmentDtServiceIplm.deleteTreatmentDtById(id);
     }
- 
+
     // ------------------- Delete All TreatmentDt-----------------------------
- 
+
     @RequestMapping(value = "/treatmentDt", method = RequestMethod.DELETE)
     public void deleteAllTreatmentDt() {
         treatmentDtServiceIplm.deleteAllTreatmentDt();

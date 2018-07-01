@@ -24,12 +24,12 @@ public class AllergicServiceImpl implements IAllergicService {
     PatientServiceImpl patientService;
 
     @Override
-    public List<Allergic> getAllAllergic() {
+    public List<Allergic> findAllAllergic() {
         return allergicRepository.findAll();
     }
 
     @Override
-    public Allergic getAllergic(String id) {
+    public Allergic findAllergicById(String id) {
         Optional<Allergic> allergic = allergicRepository.findById(id);
         if (allergic.isPresent()){
             return allergic.get();
@@ -38,13 +38,13 @@ public class AllergicServiceImpl implements IAllergicService {
     }
 
     @Override
-    public Medicine getMedicineById(String medicineId) {
-        return medicineService.getMedicinById(medicineId);
+    public Medicine findMedicineById(String medicineId) {
+        return medicineService.findMedicinById(medicineId);
     }
 
     @Override
-    public Patient getPatientById(String patientId) {
-        return patientService.getPatientById(patientId);
+    public Patient findPatientById(String patientId) {
+        return patientService.findPatientById(patientId);
     }
 
     @Override

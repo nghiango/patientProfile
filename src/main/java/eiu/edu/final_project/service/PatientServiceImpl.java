@@ -13,7 +13,7 @@ public class PatientServiceImpl implements IPatientService {
     @Autowired
     IPatientRepository patientRepository;
     @Override
-    public Patient getPatientById(String patientId) {
+    public Patient findPatientById(String patientId) {
         Optional<Patient> patient = patientRepository.findById(patientId);
         if (patient.isPresent()){
             return patient.get();

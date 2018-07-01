@@ -3,7 +3,6 @@ package eiu.edu.final_project.controller;
 import eiu.edu.final_project.domain.File;
 import eiu.edu.final_project.domain.Medicine;
 import eiu.edu.final_project.domain.Treatment;
-import eiu.edu.final_project.repository.ITreatmentRepository;
 import eiu.edu.final_project.service.FileServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.IOException;
-import java.util.Optional;
 
 @RestController
 public class FileController {
@@ -36,7 +34,7 @@ public class FileController {
     public @ResponseBody
     String uploadMultipleFileHandler(@RequestParam(value = "files", required = false) MultipartFile mfile,
                                      @RequestParam("treatmentId") String treatmentId){
-        Treatment treatment = fileService.getTreatmentById(treatmentId);
+        Treatment treatment = fileService.findTreatmentById(treatmentId);
         File file = new File();
         try {
 

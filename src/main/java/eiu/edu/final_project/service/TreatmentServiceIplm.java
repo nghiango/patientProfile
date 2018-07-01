@@ -38,7 +38,8 @@ public class TreatmentServiceIplm implements ITreatmentService {
 	}
 
 	@Override
-	public void updateTreatment(Treatment treatment) {
+	public void updateTreatment(String treatmentId, Treatment treatment) {
+		treatment.setId(treatmentId);
 		saveTreatment(treatment);
 	}
 

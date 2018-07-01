@@ -39,7 +39,8 @@ public class TypeMedicineServiceImpl implements ITypeMedicineService {
 	}
 
 	@Override
-	public void updateTypeMedicine(TypeOfMedicine typeMedicine) {
+	public void updateTypeMedicine(String typeMedicineId, TypeOfMedicine typeMedicine) {
+		typeMedicine.setId(typeMedicineId);
 		saveTypeMedicine(typeMedicine);
 	}
 
