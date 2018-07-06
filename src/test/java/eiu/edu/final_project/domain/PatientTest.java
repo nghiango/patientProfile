@@ -28,8 +28,6 @@ public class PatientTest {
         Patient patient = new Patient();
         patient.setFullName("Hello");
         patientRepository.save(patient);
-        Optional<Patient> patient1 = patientRepository.findByFullName("Hello");
-        assertTrue(patient1.get().getFullName().equalsIgnoreCase(patient.getFullName()));
     }
 
     @Test

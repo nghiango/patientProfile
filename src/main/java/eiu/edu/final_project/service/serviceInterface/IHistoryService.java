@@ -11,7 +11,7 @@ public interface IHistoryService {
  
     void saveHistory(History history);
  
-    void updateHistory(History history);
+    void updateHistory(String historyId, History history);
  
     void deleteHistoryById(String id);
  

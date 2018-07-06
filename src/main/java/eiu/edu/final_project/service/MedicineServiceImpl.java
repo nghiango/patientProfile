@@ -18,7 +18,7 @@ public class MedicineServiceImpl implements IMedicineService {
     @Override
     public Medicine findMedicinById(String medicineId) {
         Optional<Medicine> medicine = medicineRepository.findById(medicineId);
-        if (medicine.isPresent()){
+        if (medicine.isPresent()) {
             return medicine.get();
         }
         return new Medicine();
@@ -36,7 +36,7 @@ public class MedicineServiceImpl implements IMedicineService {
 
     @Override
     public boolean isMedicineExist(Medicine medicine) {
-        return medicineRepository.findByName(medicine.getName()).isPresent();
+        return false;
     }
 
     @Override
@@ -55,7 +55,7 @@ public class MedicineServiceImpl implements IMedicineService {
     }
 
     @Override
-    public void updateMedicine(String medicineId,Medicine currentMedicine) {
+    public void updateMedicine(String medicineId, Medicine currentMedicine) {
         currentMedicine.setId(medicineId);
         medicineRepository.save(currentMedicine);
     }

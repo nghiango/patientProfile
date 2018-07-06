@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface IMedicineRepository extends MongoRepository<Medicine, String> {
     List<Medicine> findByTypeId(String medicineTypeId);
-    Optional<Medicine> findByName(String medicineName);
+    List<Medicine> findByName(String medicineName);
 }

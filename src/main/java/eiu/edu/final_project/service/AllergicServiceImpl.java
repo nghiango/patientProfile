@@ -31,7 +31,7 @@ public class AllergicServiceImpl implements IAllergicService {
     @Override
     public Allergic findAllergicById(String id) {
         Optional<Allergic> allergic = allergicRepository.findById(id);
-        if (allergic.isPresent()){
+        if (allergic.isPresent()) {
             return allergic.get();
         }
         return new Allergic();

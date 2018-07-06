@@ -11,58 +11,55 @@ import org.springframework.stereotype.Service;
 
 @Service("typeMedicineService")
 public class TypeMedicineServiceImpl implements ITypeMedicineService {
-	
-	@Autowired
-	ITypeMedicineRepository typeMedicineRepository;
 
-	@Override
-	public TypeOfMedicine findById(String id) {
-		Optional<TypeOfMedicine> typeOfMedicine = typeMedicineRepository.findById(id);
-		if (typeOfMedicine.isPresent()){
-			return typeOfMedicine.get();
-		}
-		return new TypeOfMedicine();
-	}
+    @Autowired
+    ITypeMedicineRepository typeMedicineRepository;
 
-	@Override
-	public TypeOfMedicine findByName(String name) {
-		Optional<TypeOfMedicine> typeOfMedicine = typeMedicineRepository.findByTypeName(name);
-		if (typeOfMedicine.isPresent()){
-			return typeOfMedicine.get();
-		}
-		return new TypeOfMedicine();
-	}
+    @Override
+    public TypeOfMedicine findById(String id) {
+        Optional<TypeOfMedicine> typeOfMedicine = typeMedicineRepository.findById(id);
+        if (typeOfMedicine.isPresent()) {
+            return typeOfMedicine.get();
+        }
+        return new TypeOfMedicine();
+    }
 
-	@Override
-	public void saveTypeMedicine(TypeOfMedicine typeMedicine) {
-		typeMedicineRepository.save(typeMedicine);
-	}
+    @Override
+    public List<TypeOfMedicine> findByName(String name) {
+        List<TypeOfMedicine> typeOfMedicines = typeMedicineRepository.findByTypeName(name);
+        return typeOfMedicines;
+    }
 
-	@Override
-	public void updateTypeMedicine(String typeMedicineId, TypeOfMedicine typeMedicine) {
-		typeMedicine.setId(typeMedicineId);
-		saveTypeMedicine(typeMedicine);
-	}
+    @Override
+    public void saveTypeMedicine(TypeOfMedicine typeMedicine) {
+        typeMedicineRepository.save(typeMedicine);
+    }
 
-	@Override
-	public void deleteTypeMedicineById(String id) {
-		typeMedicineRepository.deleteById(id);
-	}
+    @Override
+    public void updateTypeMedicine(String typeMedicineId, TypeOfMedicine typeMedicine) {
+        typeMedicine.setId(typeMedicineId);
+        saveTypeMedicine(typeMedicine);
+    }
 
-	@Override
-	public void deleteAllTypeMedicines() {
-		typeMedicineRepository.deleteAll();
-	}
+    @Override
+    public void deleteTypeMedicineById(String id) {
+        typeMedicineRepository.deleteById(id);
+    }
 
-	@Override
-	public List<TypeOfMedicine> findAllTypeMedicines() {
-		return (List<TypeOfMedicine>) typeMedicineRepository.findAll();
-	}
+    @Override
+    public void deleteAllTypeMedicines() {
+        typeMedicineRepository.deleteAll();
+    }
 
-	@Override
-	public boolean isTypeMedicineExist(TypeOfMedicine typeMedicine) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public List<TypeOfMedicine> findAllTypeMedicines() {
+        return (List<TypeOfMedicine>) typeMedicineRepository.findAll();
+    }
+
+    @Override
+    public boolean isTypeMedicineExist(TypeOfMedicine typeMedicine) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
 }

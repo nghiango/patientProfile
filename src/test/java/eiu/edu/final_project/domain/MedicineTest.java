@@ -29,4 +29,21 @@ public class MedicineTest {
         medicineService.updateMedicine(medicine.getId(), medicine1);
     }
 
+    @Test
+    public void saveDuplicateMedicine(){
+        Medicine medicine = new Medicine();
+        medicine.setName("Paradon");
+        medicine = medicineService.saveMedicine(medicine);
+        Medicine medicine1 = new Medicine();
+        medicine1.setName("Paradon");
+        medicineService.saveMedicine(medicine1);
+    }
+
+    @Test
+    public void isExist(){
+        Medicine medicine = new Medicine();
+        medicine.setName("Paradon");
+        medicineService.isMedicineExist(medicine);
+    }
+
 }

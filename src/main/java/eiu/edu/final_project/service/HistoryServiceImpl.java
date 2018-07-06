@@ -11,58 +11,58 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class HistoryServiceImpl implements IHistoryService {
-	
-	@Autowired
-	IHistoryRepository iHistoryRepository;
 
-	@Override
-	public History findById(String id) {
-		Optional<History> history = iHistoryRepository.findById(id);
-		if (history.isPresent()){
-			return history.get();
-		}
-		return new History();
-	}
+    @Autowired
+    IHistoryRepository iHistoryRepository;
 
-	@Override
-	public void saveHistory(History history) {
-		iHistoryRepository.save(history);
-		
-	}
+    @Override
+    public History findById(String id) {
+        Optional<History> history = iHistoryRepository.findById(id);
+        if (history.isPresent()) {
+            return history.get();
+        }
+        return new History();
+    }
 
-	@Override
-	public void updateHistory(History history) {
-		saveHistory(history);
-		
-	}
+    @Override
+    public void saveHistory(History history) {
+        iHistoryRepository.save(history);
 
-	@Override
-	public void deleteHistoryById(String id) {
-		iHistoryRepository.deleteById(id);
-		
-	}
+    }
 
-	@Override
-	public void deleteAllHistory() {
-		iHistoryRepository.deleteAll();
-		
-	}
+    @Override
+    public void updateHistory(String historyId, History history) {
+        history.setId(historyId);
+        saveHistory(history);
+    }
 
-	@Override
-	public List<History> findAllHistorys() {
-		return (List<History>) iHistoryRepository.findAll();
-	}
+    @Override
+    public void deleteHistoryById(String id) {
+        iHistoryRepository.deleteById(id);
 
-	@Override
-	public boolean isHistoryExist(History history) {
-		return iHistoryRepository.findById(history.getId()).isPresent();
-	}
+    }
 
-	@Override
-	public boolean isMedicineExist(History history) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public void deleteAllHistory() {
+        iHistoryRepository.deleteAll();
+
+    }
+
+    @Override
+    public List<History> findAllHistorys() {
+        return (List<History>) iHistoryRepository.findAll();
+    }
+
+    @Override
+    public boolean isHistoryExist(History history) {
+        return iHistoryRepository.findById(history.getId()).isPresent();
+    }
+
+    @Override
+    public boolean isMedicineExist(History history) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
 
 }
