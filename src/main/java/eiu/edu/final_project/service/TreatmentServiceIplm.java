@@ -15,50 +15,51 @@ import org.springframework.transaction.annotation.Transactional;;
 @Transactional
 public class TreatmentServiceIplm implements ITreatmentService {
 
-	@Autowired
+    @Autowired
     private ITreatmentRepository treatmentRepository;
 
-	@Override
-	public Treatment findById(String id) {
-		Optional<Treatment> treatment = treatmentRepository.findById(id);
-		if (treatment.isPresent()){
-			return treatment.get();
-		}
-		return new Treatment();
-	}
+    @Override
+    public Treatment findById(String id) {
+        Optional<Treatment> treatment = treatmentRepository.findById(id);
+        if (treatment.isPresent()) {
+            return treatment.get();
+        }
+        return new Treatment();
+    }
 
-	@Override
-	public Treatment findByName(String name) {
-		return null;
-	}
+    @Override
+    public Treatment findByName(String name) {
+        return null;
+    }
 
-	@Override
-	public void saveTreatment(Treatment treatment) {
-		treatmentRepository.save(treatment);
-	}
+    @Override
+    public void saveTreatment(Treatment treatment) {
+        treatmentRepository.save(treatment);
+    }
 
-	@Override
-	public void updateTreatment(Treatment treatment) {
-		saveTreatment(treatment);
-	}
+    @Override
+    public void updateTreatment(String treatmentId, Treatment treatment) {
+        treatment.setId(treatmentId);
+        saveTreatment(treatment);
+    }
 
-	@Override
-	public void deleteTreatmentById(String id) {
-		treatmentRepository.deleteById(id);
-	}
+    @Override
+    public void deleteTreatmentById(String id) {
+        treatmentRepository.deleteById(id);
+    }
 
-	@Override
-	public void deleteAllTreatment() {
-		treatmentRepository.deleteAll();
-	}
+    @Override
+    public void deleteAllTreatment() {
+        treatmentRepository.deleteAll();
+    }
 
-	@Override
-	public List<Treatment> findAllTreatment() {
-		return treatmentRepository.findAll();
-	}
-  
-	@Override
-	public boolean isTreatmentExist(Treatment treatment) {
-		return findById(treatment.getId()) != null;
-	}
+    @Override
+    public List<Treatment> findAllTreatment() {
+        return treatmentRepository.findAll();
+    }
+
+    @Override
+    public boolean isTreatmentExist(Treatment treatment) {
+        return findById(treatment.getId()) != null;
+    }
 }

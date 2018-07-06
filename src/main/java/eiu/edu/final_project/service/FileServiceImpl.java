@@ -14,59 +14,59 @@ import java.util.Optional;
 @Service
 public class FileServiceImpl implements IFileService {
 
-	@Autowired
-	IFileRepository fileRepository;
+    @Autowired
+    IFileRepository fileRepository;
 
-	@Autowired
-	TreatmentServiceIplm treatmentServiceIplm;
+    @Autowired
+    TreatmentServiceIplm treatmentServiceIplm;
 
-	@Override
-	public File findById(String id) {
-		Optional<File> file = fileRepository.findById(id);
-		if (file.isPresent()){
-			return file.get();
-		}
-		return new File();
-	}
+    @Override
+    public File findById(String id) {
+        Optional<File> file = fileRepository.findById(id);
+        if (file.isPresent()) {
+            return file.get();
+        }
+        return new File();
+    }
 
-	@Override
-	public List<File> findByFileId(String id) {
-		return null;
-	}
+    @Override
+    public List<File> findByFileId(String id) {
+        return null;
+    }
 
-	@Override
-	public void saveFile(File file) {
+    @Override
+    public void saveFile(File file) {
 //		fileRepository.saveAndFlush(file);
-	}
+    }
 
-	@Override
-	public void updateFile(File file) {
-		saveFile(file);
-	}
+    @Override
+    public void updateFile(File file) {
+        saveFile(file);
+    }
 
-	@Override
-	public void deleteFileById(String id) {
-		fileRepository.deleteById(id);
+    @Override
+    public void deleteFileById(String id) {
+        fileRepository.deleteById(id);
 
-	}
+    }
 
-	@Override
-	public void deleteAllFile() {
-		fileRepository.deleteAll();
-	}
+    @Override
+    public void deleteAllFile() {
+        fileRepository.deleteAll();
+    }
 
-	@Override
-	public List<File> findAllFiles() {
-		return (List<File>) fileRepository.findAll();
-	}
+    @Override
+    public List<File> findAllFiles() {
+        return (List<File>) fileRepository.findAll();
+    }
 
-	@Override
-	public boolean isFileExist(File file) {
-		return false;
-	}
+    @Override
+    public boolean isFileExist(File file) {
+        return false;
+    }
 
-	public Treatment getTreatmentById(String id){
-		return treatmentServiceIplm.findById(id);
-	}
+    public Treatment findTreatmentById(String id) {
+        return treatmentServiceIplm.findById(id);
+    }
 
 }

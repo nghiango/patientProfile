@@ -11,7 +11,7 @@ public interface ITreatmentService {
  
     void saveTreatment(Treatment treatment);
  
-    void updateTreatment(Treatment treatment);
+    void updateTreatment(String treatmentId, Treatment treatment);
  
     void deleteTreatmentById(String id);
  

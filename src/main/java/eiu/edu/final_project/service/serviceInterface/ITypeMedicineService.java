@@ -6,11 +6,11 @@ import eiu.edu.final_project.domain.TypeOfMedicine;
 public interface ITypeMedicineService {
 	TypeOfMedicine findById(String id);
 	 
-	TypeOfMedicine findByName(String name);
+	List<TypeOfMedicine> findByName(String name);
  
     void saveTypeMedicine(TypeOfMedicine typeMedicine);
  
-    void updateTypeMedicine(TypeOfMedicine typeMedicine);
+    void updateTypeMedicine(String typeMedicineId, TypeOfMedicine typeMedicine);
  
     void deleteTypeMedicineById(String id);
  
